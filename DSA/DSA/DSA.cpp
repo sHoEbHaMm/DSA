@@ -7,14 +7,9 @@
 
 int main()
 {
-    int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-    int* op = reverseArray(arr, 10);
-
-    for (int i = 0; i < 10; i++)
-    {
-        std::cout << op[i] << " ";
-    }
-    std::cout << "Hello World!\n";
+    int arr[6] = { 1,3,7,9,11,13 };
+    pairOfElementsWithSumSortedArray(arr, 6, 10);
+    
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
