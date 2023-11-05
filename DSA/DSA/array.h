@@ -1,16 +1,46 @@
 #pragma once
 
 int linearSearch(int arr[], int key, int size);
+
 int binarySearch(int arr[], int low, int high, int key, int size);
-int* reverseArray(int arr[], int size);
-bool isArraySorted(int arr[], int size);
-int* arrangeArray(int arr[], int size);
-int* mergeArrays(int arr[], int size1, int arr2[], int size2);
+
+// i j start end pe lagao, swap karte jao
+int* reverseArray(int arr[], int size); 
+
+// i, i+1 ko compare karo
+bool isArraySorted(int arr[], int size); 
+
+// i, j ko start end pe lagao, i pe negative dhundo, j pe positive, dono ko swap karo, aage badho
+int* arrangeArray(int arr[], int size); 
+
+//ek array ke start pe i, dusre pe j, teesre pe k. i j ko compare karo, 
+//jo lower usko third me add karo, lower ka tracker++, k++
+int* mergeArrays(int arr[], int size1, int arr2[], int size2); 
+
+//linear search karke dhoondna
 void findSingleMissingElement(int arr[], int size);
+
+/*
+* difference = a[0]-0
+* do till difference < a[i] - i{missing: i+difference, difference++}
+*/
 void findMultipleMissingElements(int arr[], int size);
+
+//i and i+1 sum check  karo
 void pairOfElementsWithSumUnsortedArray(int arr[], int size, int sum);
+
+/*
+* i at start, j at end
+* if i+j > sum, j--
+* if i+j < sum, i++
+*/
 void pairOfElementsWithSumSortedArray(int arr[], int size, int sum);
 
+/*
+* 
+* 
+* 
+*/
 int linearSearch(int arr[], int key, int size)
 {
 	for (int i = 0; i < size; i++)
