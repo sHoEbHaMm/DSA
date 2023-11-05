@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include "CircularLinkedList.h"
 #include <vector>
 
 struct Node
@@ -199,7 +200,6 @@ bool isLLSorted(Node* p)
     return true;
 }
 
-
 void deleteDuplicates()
 {
     Node* p = head;
@@ -251,7 +251,6 @@ void reverseLL()
         i--;
     }
 }
-
 
 void reverseLLUsingSlidingPtr()
 {
@@ -324,15 +323,10 @@ void mergingTwoLL(Node* headOfFirst, Node* headofSecond)
     DisplayLL(headofMerged);
 }
 
-int main()
-{
-    int arr[5] = { 23, 27, 28, 31, 34 };
-    int arr2[5] = { 7, 11, 15, 19, 21 };
-    Node* f = createLinkedList(arr, 5);
-    Node* s = createLinkedList(arr2, 5);
-    mergingTwoLL(f, s);
-
-}
+//int main()
+//{
+//
+//}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
