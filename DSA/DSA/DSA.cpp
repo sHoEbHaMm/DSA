@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
 
 struct Node
 {
@@ -10,7 +11,7 @@ struct Node
     struct Node* next;
 }*head = NULL, *last = NULL;
 
-void createLinkedList(int arr[], int size)
+Node* createLinkedList(int arr[], int size)
 {
     Node *temp;
     head = new Node();
@@ -27,6 +28,8 @@ void createLinkedList(int arr[], int size)
         last->next = temp;
         last = temp;
     }
+
+    return head;
 }
 
 void DisplayLL(Node* head)
@@ -218,14 +221,117 @@ void deleteDuplicates()
     }
 }
 
+void reverseLL()
+{
+    int op[5] = {0};
+    Node* p = head;
+    int i = 0;
+
+    if (head == 0)
+    {
+        printf("Linked list is empty");
+    }
+
+    //copy elements from list to array
+    while (p != 0)
+    {
+        op[i] = p->data;
+        p = p->next;
+        i++;
+    }
+
+    p = head;
+    i--;
+
+    //copy elements from array to list in reverse order
+    while (p != NULL)
+    {
+        p->data = op[i];
+        p = p->next;
+        i--;
+    }
+}
+
+
+void reverseLLUsingSlidingPtr()
+{
+    Node* p = head;
+    Node* q = NULL;
+    Node* r = NULL;
+
+    while (p != 0)
+    {
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r;
+    }
+    head = q;
+}
+
+void mergingTwoLL(Node* headOfFirst, Node* headofSecond)
+{
+/*
+* We need two more pointers, Node* headofMerged, *lastOfMerged
+* Compare data of both nodes, the one smaller add to the mergedLL and make tht nodes next null
+* Keep doing until one of the list gets exhausted, copy remaining elements
+*/
+
+    Node* headofMerged = NULL;
+    Node* lastofMerged = NULL;
+
+    if (headOfFirst->data < headofSecond->data)
+    {
+        headofMerged = lastofMerged = headOfFirst;
+        headOfFirst = headOfFirst->next;
+        lastofMerged->next = NULL;
+    }
+    else
+    {
+        headofMerged = lastofMerged = headofSecond;
+        headofSecond = headofSecond->next;
+        lastofMerged->next = NULL;
+    }
+
+    while (headOfFirst != 0 && headofSecond != 0)
+    {
+        if (headOfFirst->data < headofSecond->data)
+        {
+            lastofMerged->next = headOfFirst;
+            lastofMerged = headOfFirst;
+            headOfFirst = headOfFirst->next;
+            lastofMerged->next = NULL;
+        }
+        else
+        {
+            lastofMerged->next = headofSecond;
+            lastofMerged = headofSecond;
+            headofSecond = headofSecond->next;
+            lastofMerged->next = NULL;
+        }
+    }
+
+    if(headOfFirst != 0)
+    {
+        lastofMerged->next = headOfFirst;
+    }
+
+    if(headofSecond != 0)
+    {
+        lastofMerged->next = headofSecond;
+    }
+
+    DisplayLL(headofMerged);
+}
 
 int main()
 {
-    int arr[5] = { 23, 27, 27, 31, 34 };
-    createLinkedList(arr, 5);
-    
-    deleteDuplicates();
-    DisplayLL(head);
+    int arr[5] = { 23, 27, 28, 31, 34 };
+    int arr2[5] = { 7, 11, 15, 19, 21 };
+    Node* f = createLinkedList(arr, 5);
+    Node* s = createLinkedList(arr2, 5);
+    mergingTwoLL(f, s);
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
