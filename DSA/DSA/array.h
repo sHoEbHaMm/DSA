@@ -2,9 +2,9 @@
 
 int linearSearch(int arr[], int key, int size);
 int binarySearch(int arr[], int low, int high, int key, int size);
-int* reverseArray(int arr[], int size);
+int* reverseArray(int arr[], int size); 
 bool isArraySorted(int arr[], int size);
-int* arrangeArray(int arr[], int size);
+int* arrangeArray(int arr[], int size); //two trackers i and j, i looks for positive numbers, j for negative, swap
 int* mergeArrays(int arr[], int size1, int arr2[], int size2);
 void findSingleMissingElement(int arr[], int size);
 void findMultipleMissingElements(int arr[], int size);
